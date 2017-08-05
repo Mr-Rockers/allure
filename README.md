@@ -12,11 +12,11 @@ with simple modifications and working towards deep parts of the engine while mai
  ------------ | ------- | ----------
  BIG | Large Feature | Development of feature will take longer than other features due to size or difficulty of feature.
  BUG | Bug/Error | "Feature" is actually a bug or an error present in the code of the plugin.
+ FML | Humongous Feature | """Feature""" is so big that development for it would take an inordinate amount of time to develop. *However, this may not always turn out to be the case.*
  NOW | Critical Feature | Development is focused around feature.
  PLN | Planned | Feature is in consideration, and may be added further down the road.
  REQ | Requested | Feature has been heavily requested by the community.
  WIP | Work In Progress | Initial work on feature has been completed, but there's still plenty more to be done.
- HUMONGOUS | ...Humongous | """Feature""" is so big that development for it would take an inordinate amount of time to develop. *However, this may not always turn out to be the case.*
 
 ## *features.*
 The following features *ranked in order of importance*, have been planned, are in development or have been completed:

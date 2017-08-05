@@ -20,6 +20,7 @@ local.properties
 .loadpath
 
 .recommenders
+/Allure/target/
 
 
 
