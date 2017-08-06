@@ -21,7 +21,7 @@ with simple modifications and working towards deep parts of the engine while mai
 ## *features.*
 The following features *ranked in order of importance*, have been planned, are in development or have been completed:
 - [ ] Localised chat with the ability to set a custom distance. **NOW|WIP**
-- [ ] Basic "Name-Awareness" System. Obtain people's names by talking to them. **NOW**
+- [ ] Basic "Name-Awareness" System. Obtain peoples' names by talking to them. **NOW**
 - [ ] Allow players to tell other player's of their names. **NOW**
 - [ ] Currency system that is in the form of a physical item. **NOW**
 - [ ] Jobs that can be used to obtain currency or items. **NOW**
