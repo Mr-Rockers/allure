@@ -1,4 +1,4 @@
-# ![*allure.*](/images/logo.png)
+# ![*allure.*](/images/logoSmall.png)
 A Bukkit plugin that transforms Minecraft into an RPG without feeling too disconnected from the core game.
 There is no included *storyline* and the purpose of this plugin is to provide server owners and creators
 the tools necessary to create immersive storylines and unique experiences for players.
