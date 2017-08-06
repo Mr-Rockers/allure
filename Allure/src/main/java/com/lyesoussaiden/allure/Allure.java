@@ -2,17 +2,34 @@ package com.lyesoussaiden.allure;
 
 import java.util.logging.Level;
 
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Allure extends JavaPlugin implements Listener{
+import com.lyesoussaiden.allure.player.ChatDistance;
+import com.lyesoussaiden.allure.utils.Constants;
 
+public final class Allure extends JavaPlugin implements Listener{
+	public static String PluginApiName, InitialMOTD;
+	
+	ChatDistance chatDistance = new ChatDistance();
+	
 	@Override
 	public void onEnable() {
-		getLogger().info("Allure has been enabled.");
+		InitialMOTD = getServer().getMotd();
+		PluginApiName = (getLogger().getClass().getName().toLowerCase().contains("spigot") ? "Spigot " :
+			getLogger().getClass().getName().toLowerCase().contains("bukkit") ? "Bukkit " : "");
+		
 		getServer().getPluginManager().registerEvents(this, this);
+		getServer().getPluginManager().registerEvents(chatDistance, this);
+		
+		getLogger().info("~~~~~~~~~~~~~~~~~~~~");
+		getLogger().info(Constants.NAME + " Created by " + Constants.AUTHOR);
+		getLogger().info("Built for:  " + Constants.TARGET);
+		getLogger().info("Running on: " + PluginApiName + Bukkit.getBukkitVersion());
+		getLogger().info("~~~~~~~~~~~~~~~~~~~~");
 	}
 	
 	@Override

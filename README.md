@@ -16,11 +16,13 @@ with simple modifications and working towards deep parts of the engine while mai
  NOW | Critical Feature | Development is focused around feature.
  PLN | Planned | Feature is in consideration, and may be added further down the road.
  REQ | Requested | Feature has been heavily requested by the community.
- WIP | Work In Progress | Initial work on feature has been completed, but there's still plenty more to be done.
+ WIP | Work In Progress | This feature is being worked on.
 
 ## *features.*
 The following features *ranked in order of importance*, have been planned, are in development or have been completed:
-- [ ] Localised chat with the ability to set a custom distance. **NOW**
+- [ ] Localised chat with the ability to set a custom distance. **NOW|WIP**
+- [ ] Basic "Name-Awareness" System. Obtain people's names by talking to them. **NOW**
+- [ ] Allow players to tell other player's of their names. **NOW**
 - [ ] Currency system that is in the form of a physical item. **NOW**
 - [ ] Jobs that can be used to obtain currency or items. **NOW**
 - [ ] Mail system with the option for couriers (either NPCs or players) to deliver the mail. **PLN**
