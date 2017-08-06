@@ -3,18 +3,26 @@ package com.lyesoussaiden.allure;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.lyesoussaiden.allure.player.ChatDistance;
+import com.lyesoussaiden.allure.command.CommandHandler;
+import com.lyesoussaiden.allure.player.ChatHandler;
+import com.lyesoussaiden.allure.relationship.PlayerAlias;
+import com.lyesoussaiden.allure.relationship.PlayerRelationships;
 import com.lyesoussaiden.allure.utils.Constants;
 
 public final class Allure extends JavaPlugin implements Listener{
 	public static String PluginApiName, InitialMOTD;
 	
-	ChatDistance chatDistance = new ChatDistance();
+	PlayerAlias playerAlias;
+	PlayerRelationships playerRelationships;
+	ChatHandler chatDistance = new ChatHandler(playerRelationships, playerAlias);
+	CommandHandler commandHandler;
 	
 	@Override
 	public void onEnable() {
@@ -37,6 +45,11 @@ public final class Allure extends JavaPlugin implements Listener{
 		getLogger().info("Allure has been disabled.");
 	}
 	
+	@Override
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		return commandHandler.handleCommand(sender, command, label, args);
+	}
+
 	@EventHandler
 	public void onLogin (PlayerLoginEvent event) {
 		getLogger().log(Level.INFO, "Player " + event.getPlayer().getName() + " is logging in to the server.");
