@@ -4,11 +4,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-public class PlayerAlias {
+import com.lyesoussaiden.allure.utils.AllureIO;
+import com.lyesoussaiden.allure.utils.IAllureIO;
+
+public class PlayerAlias implements IAllureIO{
+	
+	public PlayerAlias(AllureIO allureIO) {
+		allureIO.registerConfigObject(this);
+	}
 	
 	public Map<UUID, String> customPlayerName = new HashMap<UUID, String>();
+	
+	//Gets the player's alias.
 	public String getAlias(Player player) {
 		return customPlayerName.get(player.getUniqueId());
 	}
@@ -19,5 +29,17 @@ public class PlayerAlias {
 			return;
 		}
 		customPlayerName.put(player.getUniqueId(), name);
+	}
+
+	@Override
+	public void loadData(FileConfiguration config) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void saveData(FileConfiguration config) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -6,6 +6,11 @@ import org.bukkit.command.CommandSender;
 public class CommandHandler{
 
 	public boolean handleCommand(CommandSender sender, Command command, String label, String[] args) {
+		
+		if(command.getName().equalsIgnoreCase("tN") || command.getName().equalsIgnoreCase("tellname")) {
+			
+		}
+		
 		return false;
 	}
 	

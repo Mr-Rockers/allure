@@ -4,7 +4,7 @@ version: 0.1
 author: Lyes Oussaiden
 website: https://github.com/Mr-Rockers/allure
 commands:
-  tellName:
-    description: Announces your name to nearby players.
-    aliases: [tN, tellname]
-    usage: Simply type /tN to announce your name to those nearby. (They won't forget!)
+  tellname:
+    description: Announces your name to all players that can hear you.
+    aliases: [tN]
+    usage: Simply type /tellname or /tN to announce your name to those nearby. (They won't forget!)

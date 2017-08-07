@@ -14,14 +14,21 @@ import com.lyesoussaiden.allure.command.CommandHandler;
 import com.lyesoussaiden.allure.player.ChatHandler;
 import com.lyesoussaiden.allure.relationship.PlayerAlias;
 import com.lyesoussaiden.allure.relationship.PlayerRelationships;
-import com.lyesoussaiden.allure.utils.Constants;
+import com.lyesoussaiden.allure.utils.AllureConstants;
+import com.lyesoussaiden.allure.utils.AllureIO;
+import com.lyesoussaiden.allure.utils.AllureMetrics;
 
 public final class Allure extends JavaPlugin implements Listener{
 	public static String PluginApiName, InitialMOTD;
 	
-	PlayerAlias playerAlias;
-	PlayerRelationships playerRelationships;
-	ChatHandler chatDistance = new ChatHandler(playerRelationships, playerAlias);
+	//"IO Enabled" Classes
+	AllureIO allureIO = new AllureIO(this.getConfig());
+	AllureMetrics allureMetrics = new AllureMetrics(allureIO);
+	PlayerAlias playerAlias = new PlayerAlias(allureIO);
+	PlayerRelationships playerRelationships = new PlayerRelationships(allureIO);
+	
+	//Functional Classes
+	ChatHandler chatDistance = new ChatHandler(allureMetrics, playerRelationships, playerAlias);
 	CommandHandler commandHandler;
 	
 	@Override
@@ -34,15 +41,24 @@ public final class Allure extends JavaPlugin implements Listener{
 		getServer().getPluginManager().registerEvents(chatDistance, this);
 		
 		getLogger().info("~~~~~~~~~~~~~~~~~~~~");
-		getLogger().info(Constants.NAME + " Created by " + Constants.AUTHOR);
-		getLogger().info("Built for:  " + Constants.TARGET);
+		getLogger().info(AllureConstants.NAME + " Created by " + AllureConstants.AUTHOR);
+		getLogger().info("Built for:  " + AllureConstants.TARGET);
 		getLogger().info("Running on: " + PluginApiName + Bukkit.getBukkitVersion());
+		getLogger().info("Loading configuration files...");
+		this.saveDefaultConfig();
+		allureIO.readAll();
+		getLogger().info("Loaded.");
 		getLogger().info("~~~~~~~~~~~~~~~~~~~~");
 	}
 	
 	@Override
 	public void onDisable() {
-		getLogger().info("Allure has been disabled.");
+		getLogger().info("~~~~~~~~~~~~~~~~~~~~");
+		getLogger().info("Saving configuration files...");
+		allureIO.writeAll();
+		this.saveConfig();
+		getLogger().info("Saved.");
+		getLogger().info("~~~~~~~~~~~~~~~~~~~~");
 	}
 	
 	@Override

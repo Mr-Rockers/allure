@@ -8,13 +8,16 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import com.lyesoussaiden.allure.relationship.PlayerAlias;
 import com.lyesoussaiden.allure.relationship.PlayerRelationships;
 import com.lyesoussaiden.allure.relationship.RelationshipStatus;
+import com.lyesoussaiden.allure.utils.AllureMetrics;
 
 public class ChatHandler implements Listener{
 	
+	public AllureMetrics allureMetrics;
 	public PlayerRelationships playerRelationships;
 	public PlayerAlias playerAlias;
 	
-	public ChatHandler(PlayerRelationships playerRelationships, PlayerAlias playerAlias) {
+	public ChatHandler(AllureMetrics allureMetrics, PlayerRelationships playerRelationships, PlayerAlias playerAlias) {
+		this.allureMetrics = allureMetrics;
 		this.playerRelationships = playerRelationships;
 		this.playerAlias = playerAlias;
 	}
@@ -24,7 +27,7 @@ public class ChatHandler implements Listener{
 		event.setCancelled(true);
 		for(Player p : event.getPlayer().getWorld().getPlayers()) {
 			
-			if(event.getPlayer().getLocation().distance(p.getLocation()) < 20) { //If the player's position is within X to the iterated players position.
+			if(allureMetrics.arePlayersInChatDistance(event.getPlayer(), p)) { //If the player's position is within X to the iterated players position.
 			
 				//Set message colour and name.
 				String prefix;
@@ -34,7 +37,7 @@ public class ChatHandler implements Listener{
 				else {
 					prefix = "§7";
 					
-					if(playerRelationships.getRelationship(event.getPlayer().getUniqueId(), p.getUniqueId()) == RelationshipStatus.NONE) {
+					if(playerRelationships.getRelationship(event.getPlayer(), p) == RelationshipStatus.NONE) {
 						prefix += "[???] ";
 					}
 					else

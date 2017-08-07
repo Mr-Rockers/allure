@@ -1,0 +1,7 @@
+####Options####
+
+#Measured in metres, where one metre equates to the length of one Minecraft block.
+metrics:
+  maximumChatDistance: 20
+
+#Generated
