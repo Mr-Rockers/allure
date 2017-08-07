@@ -13,7 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.lyesoussaiden.allure.command.CommandHandler;
 import com.lyesoussaiden.allure.player.ChatHandler;
 import com.lyesoussaiden.allure.relationship.PlayerAlias;
-import com.lyesoussaiden.allure.relationship.PlayerRelationships;
+import com.lyesoussaiden.allure.relationship.PlayerRelationshipHandler;
 import com.lyesoussaiden.allure.utils.AllureConstants;
 import com.lyesoussaiden.allure.utils.AllureIO;
 import com.lyesoussaiden.allure.utils.AllureMetrics;
@@ -25,10 +25,10 @@ public final class Allure extends JavaPlugin implements Listener{
 	AllureIO allureIO = new AllureIO(this.getConfig());
 	AllureMetrics allureMetrics = new AllureMetrics(allureIO);
 	PlayerAlias playerAlias = new PlayerAlias(allureIO);
-	PlayerRelationships playerRelationships = new PlayerRelationships(allureIO);
+	PlayerRelationshipHandler playerRelationships = new PlayerRelationshipHandler(allureIO);
+	ChatHandler chatDistance = new ChatHandler(allureIO, allureMetrics, playerRelationships, playerAlias);
 	
 	//Functional Classes
-	ChatHandler chatDistance = new ChatHandler(allureMetrics, playerRelationships, playerAlias);
 	CommandHandler commandHandler;
 	
 	@Override

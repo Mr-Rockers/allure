@@ -10,9 +10,10 @@ with simple modifications and working towards deep parts of the engine while mai
 
 ## *features.*
 The following features *ranked in order of importance*, have been planned, are in development or have been completed:
+- [ ] Fix IO! **NOW|BUG**
 - [x] Localised chat with the ability to set a custom distance. **NOW|WIP**
-- [ ] Relationship system with three different levels: *NONE, ACQUAINTANCE & TRUSTED* **NOW|WIP** 
-- [ ] Basic "Name-Awareness" System. Obtain peoples' names by talking to them. **NOW**
+- [x] Relationship system with three different levels: *NONE, ACQUAINTANCE & TRUSTED* **NOW|WIP** 
+- [x] Basic "Name-Awareness" System. Obtain peoples' names by talking to them. **NOW**
 - [ ] Allow players to tell other player's of their *trusted friends* names. **NOW**
 - [ ] Currency system that is in the form of a physical item. **NOW**
 - [ ] Jobs that can be used to obtain currency or items. **NOW**
