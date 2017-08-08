@@ -10,8 +10,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.lyesoussaiden.allure.chat.ChatHandler;
 import com.lyesoussaiden.allure.command.CommandHandler;
-import com.lyesoussaiden.allure.player.ChatHandler;
 import com.lyesoussaiden.allure.relationship.PlayerAlias;
 import com.lyesoussaiden.allure.relationship.PlayerRelationshipHandler;
 import com.lyesoussaiden.allure.utils.AllureConstants;
@@ -26,10 +26,10 @@ public final class Allure extends JavaPlugin implements Listener{
 	AllureMetrics allureMetrics = new AllureMetrics(allureIO);
 	PlayerAlias playerAlias = new PlayerAlias(allureIO);
 	PlayerRelationshipHandler playerRelationships = new PlayerRelationshipHandler(allureIO);
-	ChatHandler chatDistance = new ChatHandler(allureIO, allureMetrics, playerRelationships, playerAlias);
+	ChatHandler chatHandler = new ChatHandler(allureIO, allureMetrics, playerRelationships, playerAlias);
 	
 	//Functional Classes
-	CommandHandler commandHandler;
+	CommandHandler commandHandler = new CommandHandler(chatHandler, playerAlias);
 	
 	@Override
 	public void onEnable() {
@@ -38,15 +38,19 @@ public final class Allure extends JavaPlugin implements Listener{
 			getLogger().getClass().getName().toLowerCase().contains("bukkit") ? "Bukkit " : "");
 		
 		getServer().getPluginManager().registerEvents(this, this);
-		getServer().getPluginManager().registerEvents(chatDistance, this);
+		getServer().getPluginManager().registerEvents(chatHandler, this);
 		
 		getLogger().info("~~~~~~~~~~~~~~~~~~~~");
 		getLogger().info(AllureConstants.NAME + " Created by " + AllureConstants.AUTHOR);
 		getLogger().info("Built for:  " + AllureConstants.TARGET);
 		getLogger().info("Running on: " + PluginApiName + Bukkit.getBukkitVersion());
 		getLogger().info("Loading configuration files...");
+		
 		this.saveDefaultConfig();
+		
+		allureIO.assignConfig(this.getConfig());
 		allureIO.readAll();
+		
 		getLogger().info("Loaded.");
 		getLogger().info("~~~~~~~~~~~~~~~~~~~~");
 	}

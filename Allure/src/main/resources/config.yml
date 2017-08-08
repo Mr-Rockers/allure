@@ -7,8 +7,14 @@ metrics:
 ####Text####
 
 lang:
-  announceNameToSender: §O§2You announce your name.
+  announceNameToSender: You announce your name.
   announceNameToListeners: My name is _1. 
-  announceNameFail: §O§2Nobody appears to have heard that.
+  announceNameFail: Nobody appears to have heard that.
+  
+  setNameMessage: You decide to call yourself _1.
 
-####Generated####
+####Saved Data####
+
+save:
+  names:
+    

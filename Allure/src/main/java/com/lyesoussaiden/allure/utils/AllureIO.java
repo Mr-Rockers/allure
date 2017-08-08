@@ -7,12 +7,13 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 public class AllureIO {
 		
-	public FileConfiguration defaultConfig;
-	public AllureIO(FileConfiguration defaultConfig) {
-		this.defaultConfig = defaultConfig;
-	}
+	public FileConfiguration config;
 	
 	public List<IAllureIO> configObjects = new ArrayList<IAllureIO>();
+	
+	public AllureIO(FileConfiguration config) {
+		this.assignConfig(config);
+	}
 	
 	public void registerConfigObject(IAllureIO configObject) {
 		configObjects.add(configObject);
@@ -20,14 +21,18 @@ public class AllureIO {
 	
 	public void readAll() {
 		for(IAllureIO configObject : configObjects) {
-			configObject.loadData(defaultConfig);
+			configObject.loadData(config);
 		}
 	}
 	
 	public void writeAll() {
 		for(IAllureIO configObject : configObjects) {
-			configObject.saveData(defaultConfig);
+			configObject.saveData(config);
 		}
+	}
+	
+	public void assignConfig(FileConfiguration config) {
+		this.config = config;
 	}
 	
 }

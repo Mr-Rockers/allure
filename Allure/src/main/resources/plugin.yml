@@ -4,7 +4,10 @@ version: 0.1
 author: Lyes Oussaiden
 website: https://github.com/Mr-Rockers/allure
 commands:
+  name:
+    description: Sets your name. (You may only be able to do this once.)
+    usage: Simply type /name, then your chosen name, to set it. (You may only be able to do this once.)
   tellname:
-    description: Announces your name to all players that can hear you.
+    description: Announces your name to all players that can hear you. (They won't forget!)
     aliases: [tN]
     usage: Simply type /tellname or /tN to announce your name to those nearby. (They won't forget!)

@@ -42,7 +42,7 @@ public class PlayerRelationshipHandler implements IAllureIO{
 	}
 	
 	public boolean setRelationship (RelationshipPlayer rPlayer, Player secondParty, RelationshipStatus status, boolean doNotSetLower) {
-		if( (getRelationship(rPlayer, secondParty).ordinal() > status.ordinal() && doNotSetLower) || !doNotSetLower) {
+		if( (getRelationship(rPlayer, secondParty).ordinal() < status.ordinal() && doNotSetLower) || !doNotSetLower) {
 			rPlayer.acquaintances.put(secondParty.getUniqueId(), status);
 			return true;
 		}
@@ -78,9 +78,12 @@ public class PlayerRelationshipHandler implements IAllureIO{
 	public List<Player> announceRelationship (Player source, int radius, RelationshipStatus status) {
 		List<Player> affectedPlayers = new ArrayList<Player>();
 		for (Player recipient : source.getWorld().getPlayers()) {
-			if(recipient.getLocation().distance(source.getLocation()) <= radius) {
-				setRelationship(getRelationshipPlayer(recipient, true), source, status, true);
-				affectedPlayers.add(recipient);
+			if(recipient.getUniqueId() != source.getUniqueId()) {
+				if(recipient.getLocation().distance(source.getLocation()) <= radius) {
+					System.out.println(recipient.getName() + " - affected player");
+					setRelationship(getRelationshipPlayer(recipient, true), source, status, true);
+					affectedPlayers.add(recipient);
+				}
 			}
 		}
 		return affectedPlayers;

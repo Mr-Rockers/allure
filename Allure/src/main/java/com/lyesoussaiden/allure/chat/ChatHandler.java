@@ -1,4 +1,4 @@
-package com.lyesoussaiden.allure.player;
+package com.lyesoussaiden.allure.chat;
 
 import java.util.List;
 
@@ -36,7 +36,8 @@ public class ChatHandler implements Listener, IAllureIO{
 		if(sender != recipient){
 			prefix = "§7";
 			
-			if(playerRelationships.getRelationship(playerRelationships.getRelationshipPlayer(recipient, true), sender) == RelationshipStatus.NONE) {
+			RelationshipStatus senderRecieverRelationship = playerRelationships.getRelationship(playerRelationships.getRelationshipPlayer(recipient, true), sender);
+			if(senderRecieverRelationship == RelationshipStatus.NONE) {
 				prefix += "[???] ";
 			}
 			else
@@ -59,21 +60,34 @@ public class ChatHandler implements Listener, IAllureIO{
 			
 			if(allureMetrics.arePlayersInChatDistance(event.getPlayer(), p)) { //If the player's position is within X to the iterated players position.
 				
-				p.sendMessage(getNamePrefix(p, event.getPlayer()) + event.getMessage());
+				p.sendMessage(getNamePrefix(event.getPlayer(), p) + event.getMessage());
 			
 			}
 		}
 	}
 	
 	public void announceName(Player source) {
+		
+		//Get Name
+		String playerName = playerAlias.getAlias(source);
+		if(playerName == null) {
+			playerName = source.getPlayerListName();
+		}
+		
+		//Format message.
+		String announceNameToListenersFormatted = new String(announceNameToListeners).replace("_1", playerName);
+		
+		//Get affected players and set a minimum RelationshipStatus level of acquaintance.
 		List<Player> affectedPlayers = playerRelationships.announceRelationship(source, allureMetrics.getMaximumChatDistance(), RelationshipStatus.ACQUAINTANCE);
+		
+		//If no players are found, message the sender saying that their attempt failed.
 		if(affectedPlayers.isEmpty()) {
-			source.sendMessage(announceNameFail);
+			source.sendMessage("§2§O" + announceNameFail);
 		}
 		else {
-			source.sendMessage(announceNameToSender);
+			source.sendMessage("§2§O" + announceNameToSender);
 			for(Player p : affectedPlayers) {
-				source.sendMessage( getNamePrefix(source, p) + announceNameToListeners );
+				p.sendMessage( getNamePrefix(source, p) + announceNameToListenersFormatted );
 			}
 		}
 	}
