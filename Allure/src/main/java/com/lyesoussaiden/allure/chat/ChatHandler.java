@@ -37,7 +37,7 @@ public class ChatHandler implements Listener, IAllureIO{
 			prefix = "§7";
 			
 			RelationshipStatus senderRecieverRelationship = playerRelationships.getRelationship(playerRelationships.getRelationshipPlayer(recipient, true), sender);
-			if(senderRecieverRelationship == RelationshipStatus.NONE) {
+			if(senderRecieverRelationship.toInt() <= 0) {
 				prefix += "[???] ";
 			}
 			else

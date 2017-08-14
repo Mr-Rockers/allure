@@ -8,19 +8,22 @@ with simple modifications and working towards deep parts of the engine while mai
 *effectively reworking the game as if it was built with RPG storylines in mind.*
 <hr>
 
+## *completed features.*
+The following features have been completed and no work has been planned to extend these features further.
+- [x] Localised chat with the ability to set a custom distance.
+- [x] Basic "Name-Awareness" System. Obtain peoples' names by talking to them.
+
 ## *features.*
-The following features *ranked in order of importance*, have been planned, are in development or have been completed:
-- [x] Fix IO! (Now working, to some extent. Just needs proper implementation.) **NOW|WIP**
-- [x] Localised chat with the ability to set a custom distance. **NOW|WIP**
+The following features *ranked in order of importance*, have been planned or are in development:
 - [x] Relationship system with three different levels: *NONE, ACQUAINTANCE & TRUSTED* **NOW|WIP** 
-- [x] Basic "Name-Awareness" System. Obtain peoples' names by talking to them. **NOW|WIP**
 - [ ] Allow players to tell other player's of their *trusted friends* names. **NOW**
-- [ ] Currency system that is in the form of a physical item. **NOW**
+- [ ] Currency system that is in the form of a physical items. **NOW**
 - [ ] Jobs that can be used to obtain currency or items. **NOW**
 - [ ] Mail system with the option for couriers (either NPCs or players) to deliver the mail. **PLN**
 - [ ] Add 'characters' to create storylines. These will be NPCs that you can communicate with. **PLN**
 - [ ] Modified behaviour for the custom characters such as relationships with other characters, homes, etc. **BIG|PLN**
 - [ ] Banks to hold the money in an account. **PLN**
+- [ ] Ability for server managers and creators to add "bosses" with instancing. **PLN|BIG**
 
 ## *features abbreviation key.*
  Abbreviation | Meaning | Definition
